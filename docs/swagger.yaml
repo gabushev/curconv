@@ -1,0 +1,48 @@
+basePath: /
+host: localhost:3000
+info:
+  contact: {}
+  description: This is a sample server for a currency exchange API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Currency exchange API
+  version: "1.0"
+paths:
+  /convert:
+    get:
+      description: Get the exchange rate between two currencies with a given amount
+      operationId: get-exchange-rate
+      parameters:
+      - description: From currency code
+        in: query
+        name: from
+        required: true
+        type: string
+      - description: To currency code
+        in: query
+        name: to
+        required: true
+        type: string
+      - description: Amount to convert
+        in: query
+        name: amount
+        required: true
+        type: number
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get amount converted from one currency to another
+swagger: "2.0"
